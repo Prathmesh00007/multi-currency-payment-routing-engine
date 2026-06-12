@@ -1,0 +1,180 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    color-scheme: dark;
+  }
+  
+  html, body {
+    @apply bg-slate-950 text-slate-100 font-sans;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: #334155 #0f172a;
+  }
+
+  *::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+  *::-webkit-scrollbar-track {
+    background: #0f172a;
+  }
+  *::-webkit-scrollbar-thumb {
+    background-color: #334155;
+    border-radius: 3px;
+  }
+}
+
+@layer components {
+  .card {
+    @apply bg-slate-900 border border-slate-800 rounded-xl shadow-card;
+  }
+  
+  .card-glass {
+    @apply bg-slate-900/60 backdrop-blur-sm border border-slate-700/50 rounded-xl;
+  }
+
+  .btn-primary {
+    @apply bg-indigo-600 hover:bg-indigo-500 text-white font-semibold px-4 py-2.5 
+           rounded-lg transition-all duration-200 flex items-center gap-2 
+           disabled:opacity-50 disabled:cursor-not-allowed shadow-glow-indigo
+           hover:shadow-glow-indigo hover:-translate-y-0.5 active:translate-y-0;
+  }
+  
+  .btn-secondary {
+    @apply bg-slate-800 hover:bg-slate-700 text-slate-200 font-medium px-4 py-2.5 
+           rounded-lg transition-all duration-200 flex items-center gap-2
+           border border-slate-700 hover:border-slate-600;
+  }
+
+  .input-field {
+    @apply w-full bg-slate-800 border border-slate-700 rounded-lg px-3 py-2.5 
+           text-slate-100 placeholder-slate-500 
+           focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500/50
+           transition-all duration-200 font-mono;
+  }
+
+  .label {
+    @apply text-xs font-semibold uppercase tracking-wider text-slate-400 mb-1.5 block;
+  }
+
+  .badge {
+    @apply inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-xs font-semibold;
+  }
+
+  .badge-success {
+    @apply badge bg-emerald-500/15 text-emerald-400 border border-emerald-500/30;
+  }
+
+  .badge-danger {
+    @apply badge bg-red-500/15 text-red-400 border border-red-500/30;
+  }
+
+  .badge-warning {
+    @apply badge bg-amber-500/15 text-amber-400 border border-amber-500/30;
+  }
+
+  .badge-info {
+    @apply badge bg-indigo-500/15 text-indigo-400 border border-indigo-500/30;
+  }
+
+  .metric-value {
+    @apply text-2xl font-bold text-slate-100 font-mono;
+  }
+
+  .metric-label {
+    @apply text-xs text-slate-500 uppercase tracking-wider font-medium;
+  }
+
+  .section-header {
+    @apply text-xs font-bold uppercase tracking-widest text-slate-400 border-b border-slate-800 pb-2 mb-4;
+  }
+
+  .node-pulse {
+    animation: nodePulse 2s ease-in-out infinite;
+  }
+
+  @keyframes nodePulse {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(99, 102, 241, 0.4); }
+    50% { box-shadow: 0 0 0 6px rgba(99, 102, 241, 0); }
+  }
+}
+
+/* Custom toggle switch */
+.toggle-switch {
+  position: relative;
+  display: inline-block;
+  width: 40px;
+  height: 22px;
+}
+
+.toggle-switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.toggle-slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background-color: #334155;
+  transition: 0.3s;
+  border-radius: 22px;
+}
+
+.toggle-slider:before {
+  position: absolute;
+  content: "";
+  height: 16px;
+  width: 16px;
+  left: 3px;
+  bottom: 3px;
+  background-color: #94a3b8;
+  transition: 0.3s;
+  border-radius: 50%;
+}
+
+input:checked + .toggle-slider {
+  background-color: #6366f1;
+}
+
+input:checked + .toggle-slider:before {
+  transform: translateX(18px);
+  background-color: white;
+}
+
+/* Routing path animation */
+@keyframes flowDash {
+  to { stroke-dashoffset: -20; }
+}
+
+.flow-line {
+  animation: flowDash 1s linear infinite;
+}
+
+/* Gradient text */
+.gradient-text {
+  background: linear-gradient(135deg, #818cf8, #6366f1, #4f46e5);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.gradient-text-blue {
+  background: linear-gradient(135deg, #60a5fa, #3b82f6, #2563eb);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Glow effects for active routing */
+.active-route-glow {
+  box-shadow: 0 0 30px rgba(99, 102, 241, 0.2), 0 0 60px rgba(99, 102, 241, 0.1);
+}
