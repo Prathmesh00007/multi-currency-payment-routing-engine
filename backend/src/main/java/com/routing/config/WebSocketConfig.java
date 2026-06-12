@@ -32,11 +32,12 @@ public class WebSocketConfig implements WebSocketMessageBrokerConfigurer {
     @Override
     public void registerStompEndpoints(StompEndpointRegistry registry) {
         registry.addEndpoint("/ws")
-            // Allow CORS from Vite dev server and production
+            // Allow CORS from Vite dev server, production Netlify frontend, and any localhost port
             .setAllowedOriginPatterns(
-                "http://localhost:5173",
-                "http://localhost:3000",
-                "http://127.0.0.1:*"
+                "http://localhost:*",
+                "http://127.0.0.1:*",
+                "https://payment-routing.netlify.app",
+                "https://*.netlify.app"
             )
             // SockJS fallback for browsers without native WebSocket
             .withSockJS();
