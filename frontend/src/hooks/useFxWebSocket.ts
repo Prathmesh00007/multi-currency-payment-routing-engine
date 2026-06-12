@@ -82,7 +82,7 @@ export function useFxWebSocket(): UseFxWebSocketResult {
     setConnectionStatus('CONNECTING');
 
     const client = new Client({
-      webSocketFactory: () => new SockJS('http://localhost:8080/ws'),
+      webSocketFactory: () => new SockJS('https://multi-currency-payment-routing-engine.onrender.com/ws'),
       reconnectDelay: 5000,
       heartbeatIncoming: 10000,
       heartbeatOutgoing: 10000,

@@ -9,7 +9,7 @@ export default defineConfig({
     port: 5173,
     proxy: {
       '/api': {
-        target: 'http://localhost:8080',
+        target: 'https://multi-currency-payment-routing-engine.onrender.com',
         changeOrigin: true,
       }
     }
