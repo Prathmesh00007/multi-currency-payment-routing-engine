@@ -17,14 +17,14 @@ A pitch-ready institutional payment routing prototype built with **Spring Boot 3
 
 ## Data Sources
 
-| Data Type | Source |
-|-----------|--------|
-| FX Base Rates | Frankfurter API (free, ECB) → mock fallback |
-| Node / Bank Network | **Synthetic mock data** |
-| Routing Fees / Spreads | **Synthetic mock data** |
-| Latency Values | **Synthetic mock data** |
-| Liquidity Balances | **Synthetic mock data** |
-| ISO 20022 Structure | Real ISO 20022 field naming (pacs.008) |
+| System Component | Data Source / Implementation Strategy |
+|------------------|----------------------------------------|
+| FX Base Rates | **3-Tier Live Engine**<br>• Tier A: Frankfurter API (Daily ECB Reference)<br>• Tier B: Finnhub WebSockets (Live Ticks for Major Pairs)<br>• Tier C: ExchangeRate-API (Exotics & Emerging Markets)<br><br>+ Deterministic Mock Fallback |
+| Node / Bank Network | Stellar Testnet (Dynamic Proxy via Horizon API) |
+| Routing Fees / Spreads | Real-time Stellar Testnet Data (Dynamic DEX spreads and blockchain network fees converted into correspondent banking equivalents) |
+| Latency Values | Synthetic Mock Data (Simulated clearance and settlement times) |
+| Liquidity Balances | Synthetic Mock Data (Simulated internal Nostro/Vostro account balances) |
+| ISO 20022 Structure | Real ISO 20022 field naming and message structure (e.g., `pacs.008`) |
 
 ---
 
