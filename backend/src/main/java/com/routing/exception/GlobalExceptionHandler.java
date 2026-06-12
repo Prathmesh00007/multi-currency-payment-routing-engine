@@ -105,7 +105,7 @@ public class GlobalExceptionHandler {
         return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
             .body(ApiErrorResponse.builder()
                 .status(500)
-                .message("An internal error occurred. Please try again.")
+                .message("Internal Error: " + ex.getMessage() + " (Class: " + ex.getClass().getSimpleName() + ")")
                 .errorCode("INTERNAL_ERROR")
                 .timestamp(LocalDateTime.now())
                 .build());

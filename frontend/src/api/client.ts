@@ -12,7 +12,7 @@ import type {
  * Vite proxy forwards /api/* requests to http://localhost:8080.
  */
 const apiClient = axios.create({
-  baseURL: '/api',
+  baseURL: 'https://multi-currency-payment-routing-engine.onrender.com/api',
   timeout: 10000,
   headers: {
     'Content-Type': 'application/json',
