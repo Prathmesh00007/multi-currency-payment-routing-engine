@@ -1,3 +1,2 @@
-backend/src/main/resources/application.properties
 backend/src/test/resources/application.properties
 frontend/node_modules
